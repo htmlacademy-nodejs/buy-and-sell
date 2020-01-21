@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Доска объявлений — современный веб-сайт, упрощающий продажу или покупку абсолютно любых вещей.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Куплю Продам</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__wrapper">
+      <a class="header__logo logo" href="main.html">
+        <img src="img/logo.svg" width="179" height="34" alt="Логотип Куплю Продам">
+      </a>
+      <nav class="header__user-menu">
+        <ul class="header__list">
+            <li class="header__item">
+              <a href="my-tickets.html">Публикации</a>
+            </li>
+            <li class="header__item">
+              <a href="comments.html">Комментарии</a>
+            </li>
+        </ul>
+      </nav>
+      <form class="search" method="get" action="#" autocomplete="off">
+        <input type="search" name="search" placeholder="Поиск" aria-label="Поиск">
+        <div class="search__icon"></div>
+        <div class="search__close-btn"></div>
+      </form>
+      <a class="header__avatar avatar" href="#">
+        <img src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x" alt="Аватар пользователя">
+      </a>
+      <a class="header__input" href="sign-up.html">Вход и регистрация</a>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="sign-up">
+      <form class="sign-up__form form" action="#" method="post" enctype="multipart/form-data" autocomplete="off">
+        <div class="sign-up__title">
+          <h2>Регистрация</h2>
+          <a class="sign-up__link" href="login.html">Вход</a>
+        </div>
+        <div class="sign-up__avatar-container js-preview-container">
+          <div class="sign-up__avatar js-preview"></div>
+          <div class="sign-up__field-avatar">
+            <input type="file" id="avatar" name="avatar" class="visually-hidden js-file-field">
+            <label for="avatar">
+              <span class="sign-up__text-upload">Загрузить аватар…</span>
+              <span class="sign-up__text-another">Загрузить другой аватар…</span>
+            </label>
+          </div>
+        </div>
+        <div class="form__field sign-up__field">
+          <input type="text" name="user-name" id="user-name" class="js-field" required="">
+          <label for="user-name">Имя и фамилия</label>
+          <span>Обязательное поле</span>
+        </div>
+        <div class="form__field sign-up__field">
+          <input type="email" name="user-email" id="user-email" class="js-field" required="">
+          <label for="user-email">Эл. почта</label>
+          <span>Обязательное поле</span>
+        </div>
+        <div class="form__field sign-up__field">
+          <input type="password" name="user-password" id="user-password" class="js-field" required="">
+          <label for="user-password">Пароль</label>
+          <span>Обязательное поле</span>
+        </div>
+        <div class="form__field sign-up__field">
+          <input type="password" name="user-password-again" id="user-password-again" class="js-field" required="">
+          <label for="user-password-again">Пароль еще раз</label>
+          <span>Обязательное поле</span>
+        </div>
+        <button class="sign-up__button btn btn--medium js-button" type="submit" disabled="">Создать аккаунт</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="page-footer__wrapper">
+      <div class="page-footer__col">
+        <a href="#" class="page-footer__logo-academy" aria-label="Ссылка на сайт HTML-Академии">
+          <svg width="132" height="46">
+            <use xlink:href="img/sprite_auto.svg#logo-htmlac"></use>
+          </svg>
+        </a>
+        <p class="page-footer__copyright">© 2019 Проект Академии</p>
+      </div>
+      <div class="page-footer__col">
+        <a href="#" class="page-footer__logo logo">
+          <img src="img/logo.svg" width="179" height="35" alt="Логотип Куплю Продам">
+        </a>
+      </div>
+      <div class="page-footer__col">
+        <ul class="page-footer__nav">
+          <li>
+            <a href="sign-up.html">Вход и регистрация</a>
+          </li>
+          <li>
+            <a href="new-ticket.html">Создать объявление</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
