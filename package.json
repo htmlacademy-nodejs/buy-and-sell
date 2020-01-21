@@ -1,0 +1,25 @@
+{
+  "name": "buy-and-sell",
+  "version": "1.0.0",
+  "description": "Куплю. Продам",
+  "main": "./src/service/service.js",
+  "scripts": {
+    "test": "npm run eslint",
+    "eslint": "eslint --ext .js src/",
+    "start": "node ./src/service/service.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htmlacademy-nodejs/buy-and-sell.git"
+  },
+  "author": "HTML Academy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htmlacademy-nodejs/buy-and-sell/issues"
+  },
+  "homepage": "https://github.com/htmlacademy-nodejs/buy-and-sell#readme",
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-htmlacademy": "0.5.2"
+  }
+}
