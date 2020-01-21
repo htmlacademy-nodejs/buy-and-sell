@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Доска объявлений — современный веб-сайт, упрощающий продажу или покупку абсолютно любых вещей.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Куплю Продам</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+
+<header class="header header--logged">
+  <div class="header__wrapper">
+    <a class="header__logo logo" href="main.html">
+      <img src="img/logo.svg" width="179" height="34" alt="Логотип Куплю Продам">
+    </a>
+    <nav class="header__user-menu">
+      <ul class="header__list">
+        <li class="header__item">
+          <a href="my-tickets.html">Публикации</a>
+        </li>
+        <li class="header__item">
+          <a href="comments.html">Комментарии</a>
+        </li>
+      </ul>
+    </nav>
+    <form class="search" method="get" action="#" autocomplete="off">
+      <input type="search" name="search" placeholder="Поиск" aria-label="Поиск">
+      <div class="search__icon"></div>
+      <div class="search__close-btn"></div>
+    </form>
+    <a class="header__avatar avatar" href="#">
+      <img src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x" alt="Аватар пользователя">
+    </a>
+    <a class="header__input" href="ticket-form.html">Вход и регистрация</a>
+  </div>
+</header>
+
+<main class="page-content">
+  <section class="ticket">
+    <div class="ticket__wrapper">
+      <h1 class="visually-hidden">Карточка объявления</h1>
+      <div class="ticket__content">
+        <div class="ticket__img">
+          <img src="img/ticket.jpg" srcset="img/ticket@2x.jpg 2x" alt="Изображение товара">
+        </div>
+        <div class="ticket__info">
+          <h2 class="ticket__title">Мое старое кресло</h2>
+          <div class="ticket__header">
+            <p class="ticket__price"><span class="js-sum">4000</span> ₽</p>
+            <p class="ticket__action">ПРОДАМ</p>
+          </div>
+          <div class="ticket__desc">
+            <p>Продам свое старое кресло, чтобы сидеть и читать книги зимними вечерами. Ножки мягкие, мой пол не царапают. Кресло почти новое &ndash; продаю, т.к. надоел серый цвет. Можно, конечно, накинуть плед и спасти ситуацию, но я все-таки хочу просто другое кресло. В общем оно на самом деле удобное и с ним все хорошо, просто нам пора расстаться.</p>
+          </div>
+          <div class="ticket__data">
+            <p>
+              <b>Дата добавления:</b>
+              <span>20 ноября 2019</span>
+            </p>
+            <p>
+              <b>Автор:</b>
+              <a href="#">Денис Шкатулкин</a>
+            </p>
+            <p>
+              <b>Контакты:</b>
+              <a href="mailto:shkatulkin@ya.ru">shkatulkin@ya.ru</a>
+            </p>
+          </div>
+          <ul class="ticket__tags">
+            <li>
+              <a href="#" class="category-tile category-tile--small">
+                <span class="category-tile__image">
+                  <img src="img/cat.jpg" srcset="img/cat@2x.jpg 2x" alt="Иконка категории">
+                </span>
+                <span class="category-tile__label">Дом</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="category-tile category-tile--small">
+                <span class="category-tile__image">
+                  <img src="img/cat04.jpg" srcset="img/cat04@2x.jpg 2x" alt="Иконка категории">
+                </span>
+                <span class="category-tile__label">Спорт и отдых</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="ticket__comments">
+        <h2 class="ticket__subtitle">Коментарии</h2>
+        <div class="ticket__comment-form">
+          <form action="#" method="post" class="form comment-form">
+            <div class="comment-form__header">
+              <a href="#" class="comment-form__avatar avatar">
+                <img src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x" alt="Аватар пользователя">
+              </a>
+              <p class="comment-form__author">Вам слово</p>
+            </div>
+            <div class="comment-form__field">
+              <div class="form__field">
+                <textarea name="comment" id="comment-field" cols="30" rows="10" maxlength="400" minlength="50" class="js-field"></textarea>
+                <label for="comment-field">Текст комментария</label>
+                <span>Обязательное поле</span>
+              </div>
+            </div>
+            <button class="comment-form__button btn btn--white js-button" type="submit" disabled="">Отправить</button>
+          </form>
+        </div>
+        <div class="ticket__message">
+          <p>У этой публикации еще нет ни одного комментария.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="page-footer">
+  <div class="page-footer__wrapper">
+    <div class="page-footer__col">
+      <a href="#" class="page-footer__logo-academy" aria-label="Ссылка на сайт HTML-Академии">
+        <svg width="132" height="46">
+          <use xlink:href="img/sprite_auto.svg#logo-htmlac"></use>
+        </svg>
+      </a>
+      <p class="page-footer__copyright">© 2019 Проект Академии</p>
+    </div>
+    <div class="page-footer__col">
+      <a href="#" class="page-footer__logo logo">
+        <img src="img/logo.svg" width="179" height="35" alt="Логотип Куплю Продам">
+      </a>
+    </div>
+    <div class="page-footer__col">
+      <ul class="page-footer__nav">
+        <li>
+          <a href="ticket-form.html">Вход и регистрация</a>
+        </li>
+        <li>
+          <a href="ticket-form.html">Создать объявление</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/vendor.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

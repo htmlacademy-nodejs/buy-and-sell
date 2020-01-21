@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Доска объявлений — современный веб-сайт, упрощающий продажу или покупку абсолютно любых вещей.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Куплю Продам</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__wrapper">
+    <a class="header__logo logo" href="main.html">
+      <img src="img/logo.svg" width="179" height="34" alt="Логотип Куплю Продам">
+    </a>
+    <nav class="header__user-menu">
+      <ul class="header__list">
+        <li class="header__item">
+          <a href="my-tickets.html">Публикации</a>
+        </li>
+        <li class="header__item">
+          <a href="comments.html">Комментарии</a>
+        </li>
+      </ul>
+    </nav>
+    <form class="search" method="get" action="#" autocomplete="off">
+      <input type="search" name="search" placeholder="Поиск" value="Автомобиль" aria-label="Поиск">
+      <div class="search__icon"></div>
+      <div class="search__close-btn"></div>
+    </form>
+    <a class="header__avatar avatar" href="#">
+      <img src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x" alt="Аватар пользователя">
+    </a>
+    <a class="header__input" href="sign-up.html">Вход и регистрация</a>
+  </div>
+</header>
+
+<main class="page-content">
+  <section class="search-results">
+    <h1 class="visually-hidden">Результаты поиска</h1>
+    <div class="search-results__wrapper">
+      <p class="search-results__label">Найдено <span class="js-results">2 публикации</span></p>
+      <ul class="search-results__list">
+        <li class="search-results__item">
+          <div class="ticket-card ticket-card--color05">
+            <div class="ticket-card__img">
+              <img src="img/item05.jpg" srcset="img/item05@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">Авто</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Ленд Ровер</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">900 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="search-results__item">
+          <div class="ticket-card ticket-card--color16">
+            <div class="ticket-card__img">
+              <img src="img/item16.jpg" srcset="img/item16@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">Авто</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Хонда</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">100 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="tickets-list">
+    <h2 class="visually-hidden">Самые новые предложения</h2>
+    <div class="tickets-list__wrapper">
+      <div class="tickets-list__header">
+        <p class="tickets-list__title">Самое свежее</p>
+        <a href="#" class="tickets-list__link">Еще 25</a>
+      </div>
+      <ul>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color01">
+            <div class="ticket-card__img">
+              <img src="img/item01.jpg" srcset="img/item01@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">Куплю</span>
+              <div class="ticket-card__categories">
+                <a href="#">Дом</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Монстера</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">1000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color02">
+            <div class="ticket-card__img">
+              <img src="img/item02.jpg" srcset="img/item02@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">Дом</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Мое старое кресло</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">4000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Продам свое старое кресло, чтобы сидеть и читать книги зимними...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color03">
+            <div class="ticket-card__img">
+              <img src="img/item03.jpg" srcset="img/item03@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">ЭЛЕКТРОНИКА</a>
+                <a href="#">Дом</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Дедушкины часы</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">45 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Продаю дедушкины часы в&nbsp;прекрасном состоянии, ходят до...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color04">
+            <div class="ticket-card__img">
+              <img src="img/item04.jpg" srcset="img/item04@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">Куплю</span>
+              <div class="ticket-card__categories">
+                <a href="#">Дом</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Кофеварка</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">2000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Куплю вот такую итальянскую кофеварку, можно любой фирмы...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color05">
+            <div class="ticket-card__img">
+              <img src="img/item05.jpg" srcset="img/item05@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">Авто</a>
+                <a href="#">ЭЛЕКТРОНИКА</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Ленд Ровер</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">900 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color06">
+            <div class="ticket-card__img">
+              <img src="img/item06.jpg" srcset="img/item06@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">ЭЛЕКТРОНИКА</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Ableton</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">88 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Продам свое старое кресло, чтобы сидеть и читать книги зимними...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color07">
+            <div class="ticket-card__img">
+              <img src="img/item07.jpg" srcset="img/item07@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">ПРОДАМ</span>
+              <div class="ticket-card__categories">
+                <a href="#">Спорт и отдых</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Доска</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">55 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Продаю дедушкины часы в&nbsp;прекрасном состоянии, ходят до...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="tickets-list__item">
+          <div class="ticket-card ticket-card--color08">
+            <div class="ticket-card__img">
+              <img src="img/item08.jpg" srcset="img/item08@2x.jpg 2x" alt="Изображение товара">
+            </div>
+            <div class="ticket-card__info">
+              <span class="ticket-card__label">Куплю</span>
+              <div class="ticket-card__categories">
+                <a href="#">ЭЛЕКТРОНИКА</a>
+              </div>
+              <div class="ticket-card__header">
+                <h3 class="ticket-card__title"><a href="#">Фотик Canon</a></h3>
+                <p class="ticket-card__price"><span class="js-sum">32 000</span> ₽</p>
+              </div>
+              <div class="ticket-card__desc">
+                <p>Куплю вот такую итальянскую кофеварку, можно любой фирмы...</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer class="page-footer">
+  <div class="page-footer__wrapper">
+    <div class="page-footer__col">
+      <a href="#" class="page-footer__logo-academy" aria-label="Ссылка на сайт HTML-Академии">
+        <svg width="132" height="46">
+          <use xlink:href="img/sprite_auto.svg#logo-htmlac"></use>
+        </svg>
+      </a>
+      <p class="page-footer__copyright">© 2019 Проект Академии</p>
+    </div>
+    <div class="page-footer__col">
+      <a href="#" class="page-footer__logo logo">
+        <img src="img/logo.svg" width="179" height="35" alt="Логотип Куплю Продам">
+      </a>
+    </div>
+    <div class="page-footer__col">
+      <ul class="page-footer__nav">
+        <li>
+          <a href="sign-up.html">Вход и регистрация</a>
+        </li>
+        <li>
+          <a href="new-ticket.html">Создать объявление</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/vendor.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
