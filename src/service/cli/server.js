@@ -5,7 +5,6 @@ const http = require(`http`);
 const fs = require(`fs`).promises;
 const {HttpCode} = require(`../../constants`);
 
-
 const DEFAULT_PORT = 3000;
 const FILENAME = `mocks.json`;
 
