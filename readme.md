@@ -1,7 +1,7 @@
 # Учебный проект «{{projectTitle}}» [![Build status][travis-image]][travis-url]
 
-* Студент: [{{userName}}]({{userProfile}}).
-* Наставник: `Неизвестно`.
+* Студент: [Gleb Motuz](https://up.htmlacademy.ru/nodejs/3/user/184288).
+* Наставник: [Сергей Рожков](https://htmlacademy.ru/profile/id1069033).
 
 ---
 
