@@ -38,7 +38,7 @@ const readContent = async (filePath) => {
   }
 };
 
-const getPictureFileName = (number) => number > 10 ? `item${number}.jpg` : `item0${number}.jpg`;
+const getPictureFileName = (number) => number < 10 ? `item0${number}.jpg` : `item${number}.jpg`;
 
 const generateOffers = (count, titles, categories, sentences) => (
   Array(count).fill({}).map(() => ({
