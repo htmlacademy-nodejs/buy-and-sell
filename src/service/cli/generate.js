@@ -5,6 +5,7 @@ const fs = require(`fs`).promises;
 const {
   getRandomInt,
   shuffle,
+  printNumWithLead0,
 } = require(`../../utils`);
 
 const DEFAULT_COUNT = 1;
@@ -38,7 +39,7 @@ const readContent = async (filePath) => {
   }
 };
 
-const getPictureFileName = (number) => number < 10 ? `item0${number}.jpg` : `item${number}.jpg`;
+const getPictureFileName = (number) => `item${printNumWithLead0(number)}.jpg`;
 
 const generateOffers = (count, titles, categories, sentences) => (
   Array(count).fill({}).map(() => ({
