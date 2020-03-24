@@ -1,0 +1,76 @@
+extends ../layout.pug
+
+block content
+  main.page-content
+    section.ticket
+      .ticket__wrapper
+        h1.visually-hidden Карточка объявления
+        .ticket__content
+          .ticket__img
+            img(src="/img/ticket.jpg" srcset="/img/ticket@2x.jpg 2x" alt="Изображение товара")
+          .ticket__info
+            h2.ticket__title Мое старое кресло
+            .ticket__header
+              p.ticket__price
+                span.js-sum 4000
+                |  ₽
+              p.ticket__action ПРОДАМ
+            .ticket__desc
+              p
+                | Продам свое старое кресло, чтобы сидеть и читать книги зимними вечерами. Ножки мягкие, мой пол не царапают. Кресло почти новое – продаю, т.к. надоел серый цвет. Можно, конечно, накинуть плед и спасти ситуацию, но я все-таки хочу просто другое кресло. В общем оно на самом деле удобное и с ним все хорошо, просто нам пора расстаться.
+            .ticket__data
+              p
+                b Дата добавления:
+                span 20 ноября 2019
+              p
+                b Автор:
+                a(href="#") Денис Шкатулкин
+              p
+                b Контакты:
+                a(href="mailto:shkatulkin@ya.ru") shkatulkin@ya.ru
+            ul.ticket__tags
+              li
+                a.category-tile.category-tile--small(href="#")
+                  span.category-tile__image
+                    img(src="/img/cat.jpg" srcset="/img/cat@2x.jpg 2x" alt="Иконка категории")
+                  span.category-tile__label Дом
+              li
+                a.category-tile.category-tile--small(href="#")
+                  span.category-tile__image
+                    img(src="/img/cat04.jpg" srcset="/img/cat04@2x.jpg 2x" alt="Иконка категории")
+                  span.category-tile__label Спорт и отдых
+        .ticket__comments
+          h2.ticket__subtitle Коментарии
+          .ticket__comment-form
+            form.form.comment-form(action="#" method="post")
+              .comment-form__header
+                a.comment-form__avatar.avatar(href="#")
+                  img(src="/img/avatar.jpg" srcset="/img/avatar@2x.jpg 2x" alt="Аватар пользователя")
+                p.comment-form__author Вам слово
+              .comment-form__field
+                .form__field
+                  textarea#comment-field.js-field(name="comment" cols="30" rows="10" maxlength="400" minlength="50") Нормальное вообще кресло! А как насч
+                  label(for="comment-field") Текст комментария
+                  span Обязательное поле
+              button.comment-form__button.btn.btn--white.js-button(type="submit" disabled="") Отправить
+          .ticket__comments-list
+            ul.comments-list
+              li
+                .comment-card
+                  .comment-card__header
+                    a.comment-card__avatar.avatar(href="#")
+                      img(src="/img/avatar02.jpg" srcset="/img/avatar02@2x.jpg 2x" alt="Аватар пользователя")
+                    p.comment-card__author Георгий Шпиц
+                  .comment-card__content
+                    p Что это за рухлядь? Стыдно такое даже фотографировать, не то, что продавать.
+              li
+                .comment-card
+                  .comment-card__header
+                    a.comment-card__avatar.avatar(href="#")
+                      img(src="/img/avatar03.jpg" srcset="/img/avatar03@2x.jpg 2x" alt="Аватар пользователя")
+                    p.comment-card__author Александр Бурый
+                  .comment-card__content
+                    p
+                      | А можете доставить мне домой? Готов доплатить 300 сверху.
+                      br
+                      | Живу в центре прямо рядом с Моховой улицей. Готов купить прямо сейчас. Мой телефон 9032594748
