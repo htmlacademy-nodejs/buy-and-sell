@@ -1,0 +1,46 @@
+extends ../layout.pug
+
+block content
+  main.page-content
+    section.ticket-form
+      .ticket-form__wrapper
+        h1.ticket-form__title Новая публикация
+        .ticket-form__tile
+          form.ticket-form__form.form(action="#" method="post" enctype="multipart/form-data" autocomplete="off")
+            .ticket-form__avatar-container.js-preview-container
+              .ticket-form__avatar.js-preview
+              .ticket-form__field-avatar
+                input#avatar.visually-hidden.js-file-field(type="file" name="avatar")
+                label(for="avatar")
+                  span.ticket-form__text-upload Загрузить фото…
+                  span.ticket-form__text-another Загрузить другое фото…
+            .ticket-form__content
+              .ticket-form__row
+                .form__field
+                  input#ticket-name.js-field(type="text" name="ticket-name" required="")
+                  label(for="ticket-name") Название
+                  span Обязательное поле
+              .ticket-form__row
+                .form__field
+                  textarea#comment-field.js-field(name="comment" cols="30" rows="10" maxlength="400" minlength="50")
+                  label(for="comment-field") Описание
+                  span Обязательное поле
+              .ticket-form__row
+                select#category-field.form__select.js-multiple-select(name="category" data-label="Выбрать категорию публикации")
+                  option(value="1") Дом
+                  option(value="2") Спорт и отдых
+                  option(value="3") Авто
+                  option(value="4") Электроника
+              .ticket-form__row
+                .form__field.form__field--price
+                  input#price-field.js-field.js-price(type="number" name="price" min="1" required="")
+                  label(for="price-field") Цена
+                  span Обязательное поле
+                .form__switch.switch
+                  .switch__item
+                    input#buy-field.visually-hidden(type="radio" name="action" value="buy")
+                    label.switch__button(for="buy-field") Куплю
+                  .switch__item
+                    input#sell-field.visually-hidden(type="radio" name="action" value="sell")
+                    label.switch__button(for="sell-field") Продам
+            button.form__button.btn.btn--medium.js-button(type="submit" disabled="") Опубликовать
