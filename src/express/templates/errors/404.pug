@@ -1,0 +1,29 @@
+doctype html
+html.html-not-found(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="description" content="Доска объявлений — современный веб-сайт, упрощающий продажу или покупку абсолютно любых вещей.")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    title Куплю Продам
+    link(rel="stylesheet" href="/css/style.min.css")
+  body.body-not-found
+    main
+      section.error
+        h1.error__title 404
+        h2.error__subtitle Страница не найдена
+        ul.error__list
+          li.error__item
+            a(href="/register") Вход и регистрация
+          li.error__item
+            a(href="/offers/add") Новая публикация
+          li.error__item
+            a(href="/") Главная страница
+        form.error__search.search.search--small(method="get" action="#" autocomplete="off")
+          input(type="search" name="search" placeholder="Поиск" aria-label="Поиск")
+          .search__icon
+          .search__close-btn
+        a.error__logo.logo(href="/")
+          img(src="/img/logo.svg" width="179" height="34" alt="Логотип Куплю Продам")
+    script(src="/js/vendor.js")
+    script(src="/js/main.js")

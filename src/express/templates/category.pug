@@ -1,0 +1,199 @@
+extends layout.pug
+
+block content
+  main.page-content
+    section.categories-list
+      h1.visually-hidden Сервис объявлений "Куплю - продам"
+      ul.categories-list__wrapper
+        li.categories-list__item
+          a.category-tile(href="#")
+            span.category-tile__image
+              img(src="/img/cat.jpg" srcset="/img/cat@2x.jpg 2x" alt="Иконка категории")
+            span.category-tile__label
+              | Дом
+              span.category-tile__qty.js-qty 81
+        li.categories-list__item
+          a.category-tile.category-tile--active(href="#")
+            span.category-tile__image
+              img(src="/img/cat02.jpg" srcset="/img/cat02@2x.jpg 2x" alt="Иконка категории")
+            span.category-tile__label
+              | Электроника
+              span.category-tile__qty.js-qty 62
+        li.categories-list__item
+          a.category-tile(href="#")
+            span.category-tile__image
+              img(src="/img/cat03.jpg" srcset="/img/cat03@2x.jpg 2x" alt="Иконка категории")
+            span.category-tile__label
+              | Одежда
+              span.category-tile__qty.js-qty 106
+        li.categories-list__item
+          a.category-tile(href="#")
+            span.category-tile__image
+              img(src="/img/cat04.jpg" srcset="/img/cat04@2x.jpg 2x" alt="Иконка категории")
+            span.category-tile__label
+              | Спорт/отдых
+              span.category-tile__qty.js-qty 86
+        li.categories-list__item
+          a.category-tile(href="#")
+            span.category-tile__image
+              img(src="/img/cat05.jpg" srcset="/img/cat05@2x.jpg 2x" alt="Иконка категории")
+            span.category-tile__label
+              | Авто
+              span.category-tile__qty.js-qty 34
+        li.categories-list__item
+          a.category-tile(href="#")
+            span.category-tile__image
+              img(src="/img/cat06.jpg" srcset="/img/cat06@2x.jpg 2x" alt="Иконка категории")
+            span.category-tile__label
+              | Книги
+              span.category-tile__qty.js-qty 92
+    section.tickets-list
+      h2.visually-hidden Предложения из категории электроника
+      .tickets-list__wrapper
+        .tickets-list__header
+          p.tickets-list__title
+            | Электроника
+            b.js-qty 62
+        ul
+          li.tickets-list__item
+            .ticket-card.ticket-card--color06
+              .ticket-card__img
+                img(src="/img/item06.jpg" srcset="/img/item06@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label ПРОДАМ
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Ableton
+                  p.ticket-card__price
+                    span.js-sum 88 000
+                    |  ₽
+                .ticket-card__desc
+                  p Продам свое старое кресло, чтобы сидеть и читать книги зимними...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color08
+              .ticket-card__img
+                img(src="/img/item08.jpg" srcset="/img/item08@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label Куплю
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Фотик Canon
+                  p.ticket-card__price
+                    span.js-sum 32 000
+                    |  ₽
+                .ticket-card__desc
+                  p Куплю вот такую итальянскую кофеварку, можно любой фирмы...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color15
+              .ticket-card__img
+                img(src="/img/item15.jpg" srcset="/img/item15@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label ПРОДАМ
+                .ticket-card__categories
+                  a(href="#") Электроника
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Кофемашина
+                  p.ticket-card__price
+                    span.js-sum 26 000
+                    |  ₽
+                .ticket-card__desc
+                  p Продам свое старое кресло, чтобы сидеть и читать книги зимними...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color12
+              .ticket-card__img
+                img(src="/img/item12.jpg" srcset="/img/item12@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label Куплю
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Радио Панасоник
+                  p.ticket-card__price
+                    span.js-sum 32 000
+                    |  ₽
+                .ticket-card__desc
+                  p Куплю вот такую итальянскую кофеварку, можно любой фирмы...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color13
+              .ticket-card__img
+                img(src="/img/item13.jpg" srcset="/img/item13@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label ПРОДАМ
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Штатив Sony
+                  p.ticket-card__price
+                    span.js-sum 8 000
+                    |  ₽
+                .ticket-card__desc
+                  p Продам свое старое кресло, чтобы сидеть и читать книги зимними...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color14
+              .ticket-card__img
+                img(src="/img/item14.jpg" srcset="/img/item14@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label Куплю
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Дрон с камерой
+                  p.ticket-card__price
+                    span.js-sum 32000
+                    |  ₽
+                .ticket-card__desc
+                  p Куплю вот такую итальянскую кофеварку, можно любой фирмы...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color10
+              .ticket-card__img
+                img(src="/img/item10.jpg" srcset="/img/item10@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label ПРОДАМ
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Мое старое кресло
+                  p.ticket-card__price
+                    span.js-sum 4000
+                    |  ₽
+                .ticket-card__desc
+                  p Продам свое старое кресло, чтобы сидеть и читать книги зимними...
+          li.tickets-list__item
+            .ticket-card.ticket-card--color06
+              .ticket-card__img
+                img(src="/img/item06.jpg" srcset="/img/item06@2x.jpg 2x" alt="Изображение товара")
+              .ticket-card__info
+                span.ticket-card__label ПРОДАМ
+                .ticket-card__categories
+                  a(href="#") ЭЛЕКТРОНИКА
+                .ticket-card__header
+                  h3.ticket-card__title
+                    a(href="#") Ableton
+                  p.ticket-card__price
+                    span.js-sum 88 000
+                    |  ₽
+                .ticket-card__desc
+                  p Продам свое старое кресло, чтобы сидеть и читать книги зимними...
+        .tickets-list__pagination
+          ul.pagination
+            li
+              a.active(href="#") 1
+            li
+              a(href="#") 2
+            li
+              a(href="#") 3
+            li
+              a(href="#") 4
+            li
+              a(href="#") 5
+            li
+              a(href="#") дальше

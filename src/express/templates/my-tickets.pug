@@ -1,0 +1,86 @@
+extends layout.pug
+
+block content
+  main.page-content
+  section.tickets-list
+    h2.visually-hidden Самые новые предложения
+    .tickets-list__wrapper
+      .tickets-list__header
+        a.tickets-list__btn.btn.btn--big(href="/offers/add")
+          span Новая публикация
+      ul
+        li.tickets-list__item.js-card
+          .ticket-card.ticket-card--color06
+            .ticket-card__img
+              img(src="/img/item06.jpg" srcset="/img/item06@2x.jpg 2x" alt="Изображение товара")
+            .ticket-card__info
+              span.ticket-card__label ПРОДАМ
+              .ticket-card__categories
+                a(href="#") ЭЛЕКТРОНИКА
+              .ticket-card__header
+                h3.ticket-card__title
+                  a(href="#") Ableton
+                p.ticket-card__price
+                  span.js-sum 88 000
+                  |  ₽
+            button.ticket-card__del.js-delete(type="button") Удалить
+        li.tickets-list__item.js-card
+          .ticket-card.ticket-card--color10
+            .ticket-card__img
+              img(src="/img/item10.jpg" srcset="/img/item10@2x.jpg 2x" alt="Изображение товара")
+            .ticket-card__info
+              span.ticket-card__label ПРОДАМ
+              .ticket-card__categories
+                a(href="#") Дом
+              .ticket-card__header
+                h3.ticket-card__title
+                  a(href="#") Мое старое кресло
+                p.ticket-card__price
+                  span.js-sum 4000
+                  |  ₽
+            button.ticket-card__del.js-delete(type="button") Удалить
+        li.tickets-list__item.js-card
+          .ticket-card.ticket-card--color04
+            .ticket-card__img
+              img(src="/img/item04.jpg" srcset="/img/item04@2x.jpg 2x" alt="Изображение товара")
+            .ticket-card__info
+              span.ticket-card__label Куплю
+              .ticket-card__categories
+                a(href="#") Дом
+              .ticket-card__header
+                h3.ticket-card__title
+                  a(href="#") Кофеварка
+                p.ticket-card__price
+                  span.js-sum 2000
+                  |  ₽
+            button.ticket-card__del.js-delete(type="button") Удалить
+        li.tickets-list__item.js-card
+          .ticket-card.ticket-card--color08
+            .ticket-card__img
+              img(src="/img/item08.jpg" srcset="/img/item08@2x.jpg 2x" alt="Изображение товара")
+            .ticket-card__info
+              span.ticket-card__label Куплю
+              .ticket-card__categories
+                a(href="#") ЭЛЕКТРОНИКА
+              .ticket-card__header
+                h3.ticket-card__title
+                  a(href="#") Фотик Canon
+                p.ticket-card__price
+                  span.js-sum 32 000
+                  |  ₽
+            button.ticket-card__del.js-delete(type="button") Удалить
+        li.tickets-list__item.js-card
+          .ticket-card.ticket-card--color01
+            .ticket-card__img
+              img(src="/img/item01.jpg" srcset="/img/item01@2x.jpg 2x" alt="Изображение товара")
+            .ticket-card__info
+              span.ticket-card__label Куплю
+              .ticket-card__categories
+                a(href="#") Дом
+              .ticket-card__header
+                h3.ticket-card__title
+                  a(href="#") Монстера
+                p.ticket-card__price
+                  span.js-sum 1000
+                  |  ₽
+            button.ticket-card__del.js-delete(type="button") Удалить

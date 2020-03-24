@@ -1,0 +1,33 @@
+extends layout.pug
+
+block content
+  main.page-content
+      section.sign-up
+        form.sign-up__form.form(action="#" method="post" enctype="multipart/form-data" autocomplete="off")
+          .sign-up__title
+            h2 Регистрация
+            a.sign-up__link(href="/login") Вход
+          .sign-up__avatar-container.js-preview-container
+            .sign-up__avatar.js-preview
+            .sign-up__field-avatar
+              input#avatar.visually-hidden.js-file-field(type="file" name="avatar")
+              label(for="avatar")
+                span.sign-up__text-upload Загрузить аватар…
+                span.sign-up__text-another Загрузить другой аватар…
+          .form__field.sign-up__field
+            input#user-name.js-field(type="text" name="user-name" required="")
+            label(for="user-name") Имя и фамилия
+            span Обязательное поле
+          .form__field.sign-up__field
+            input#user-email.js-field(type="email" name="user-email" required="")
+            label(for="user-email") Эл. почта
+            span Обязательное поле
+          .form__field.sign-up__field
+            input#user-password.js-field(type="password" name="user-password" required="")
+            label(for="user-password") Пароль
+            span Обязательное поле
+          .form__field.sign-up__field
+            input#user-password-again.js-field(type="password" name="user-password-again" required="")
+            label(for="user-password-again") Пароль еще раз
+            span Обязательное поле
+          button.sign-up__button.btn.btn--medium.js-button(type="submit" disabled="") Создать аккаунт
