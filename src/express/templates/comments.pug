@@ -1,0 +1,79 @@
+extends layout.pug
+
+block content
+  main.page-content
+    section.comments
+      .comments__wrapper
+        h1.visually-hidden Страница комментариев
+        .comments__block
+          .comments__header
+            a.announce-card(href="#")
+              h2.announce-card__title Ленд Ровер
+              span.announce-card__info
+                span.announce-card__price ₽ 900 000
+                span.announce-card__type ПРОДАМ
+          ul.comments-list
+            li.js-card
+              .comment-card
+                .comment-card__header
+                  a.comment-card__avatar.avatar(href="#")
+                    img(src="/img/avatar03.jpg" srcset="/img/avatar03@2x.jpg 2x" alt="Аватар пользователя")
+                  p.comment-card__author Александр Бурый
+                .comment-card__content
+                  p
+                    | А что с прогоном автомобиля? Также вижу на фото зимнюю резину. А летняя идет ли впридачу?
+                button.comment-card__delete.js-delete(type="button") Удалить
+            li.js-card
+              .comment-card
+                .comment-card__header
+                  a.comment-card__avatar.avatar(href="#")
+                    img(src="/img/avatar04.jpg" srcset="/img/avatar04@2x.jpg 2x" alt="Аватар пользователя")
+                  p.comment-card__author Анатолий Хакимов
+                .comment-card__content
+                  p Хочу прийти посмотреть на авто в среду. Мой телефон 89254455566. Готовы принять?
+                button.comment-card__delete.js-delete(type="button") Удалить
+            li.js-card
+              .comment-card
+                .comment-card__header
+                  a.comment-card__avatar.avatar(href="#")
+                    img(src="/img/avatar02.jpg" srcset="/img/avatar02@2x.jpg 2x" alt="Аватар пользователя")
+                  p.comment-card__author Георгий Шпиц
+                .comment-card__content
+                  p Что это за рухлядь? Стыдно такое даже фотографировать, не то, что продавать.
+                button.comment-card__delete.js-delete(type="button") Удалить
+        .comments__block
+          .comments__header
+            a.announce-card(href="#")
+              h2.announce-card__title Ableton
+              span.announce-card__info
+                span.announce-card__price ₽ 900 000
+                span.announce-card__type ПРОДАМ
+          ul.comments-list
+            li.js-card
+              .comment-card
+                .comment-card__header
+                  a.comment-card__avatar.avatar(href="#")
+                    img(src="/img/avatar03.jpg" srcset="/img/avatar03@2x.jpg 2x" alt="Аватар пользователя")
+                  p.comment-card__author Александр Бурый
+                .comment-card__content
+                  p
+                    | А что с прогоном автомобиля? Также вижу на фото зимнюю резину. А летняя идет ли впридачу?
+                button.comment-card__delete.js-delete(type="button") Удалить
+            li.js-card
+              .comment-card
+                .comment-card__header
+                  a.comment-card__avatar.avatar(href="#")
+                    img(src="/img/avatar04.jpg" srcset="/img/avatar04@2x.jpg 2x" alt="Аватар пользователя")
+                  p.comment-card__author Анатолий Хакимов
+                .comment-card__content
+                  p Хочу прийти посмотреть на авто в среду. Мой телефон 89254455566. Готовы принять?
+                button.comment-card__delete.js-delete(type="button") Удалить
+            li.js-card
+              .comment-card
+                .comment-card__header
+                  a.comment-card__avatar.avatar(href="#")
+                    img(src="/img/avatar02.jpg" srcset="/img/avatar02@2x.jpg 2x" alt="Аватар пользователя")
+                  p.comment-card__author Георгий Шпиц
+                .comment-card__content
+                  p Что это за рухлядь? Стыдно такое даже фотографировать, не то, что продавать.
+                button.comment-card__delete.js-delete(type="button") Удалить
