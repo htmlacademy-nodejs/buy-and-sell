@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+  main.page-content
+    section.login
+      form.login__form.form(action="#" method="post" enctype="multipart/form-data")
+        .login__title
+          a.login__link(href="/register") Регистрация
+          h2 Вход
+        .form__field.login__field
+          input#user-email.js-field(type="email" name="user-email" required="")
+          label(for="user-email") Эл. почта
+          span Обязательное поле
+        .form__field.login__field
+          input#user-password.js-field(type="password" name="user-password" required="")
+          label(for="user-password") Пароль
+          span Обязательное поле
+        button.login__button.btn.btn--medium.js-button(type="submit" disabled="") Войти

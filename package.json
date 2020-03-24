@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run eslint",
     "eslint": "eslint --ext .js src/",
-    "start": "node ./src/service/service.js"
+    "start": "node ./src/service/service.js",
+    "start-front-server": "node ./src/express/express.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "eslint-config-htmlacademy": "0.5.2"
   },
   "dependencies": {
-    "chalk": "3.0.0"
+    "chalk": "3.0.0",
+    "express": "4.17.1",
+    "pug": "2.0.4"
   }
 }
