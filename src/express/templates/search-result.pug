@@ -6,41 +6,27 @@ block content
       h1.visually-hidden Результаты поиска
       .search-results__wrapper
         p.search-results__label
-          | Найдено
-          span.js-results 2 публикации
+          | Найдено 
+          span.js-results #{results.length} публикаций
         ul.search-results__list
-          li.search-results__item
-            .ticket-card.ticket-card--color05
-              .ticket-card__img
-                img(src="/img/item05.jpg" srcset="/img/item05@2x.jpg 2x" alt="Изображение товара")
-              .ticket-card__info
-                span.ticket-card__label ПРОДАМ
-                .ticket-card__categories
-                  a(href="#") Авто
-                .ticket-card__header
-                  h3.ticket-card__title
-                    a(href="#") Ленд Ровер
-                  p.ticket-card__price
-                    span.js-sum 900 000
-                    |  ₽
-                .ticket-card__desc
-                  p Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать...
-          li.search-results__item
-            .ticket-card.ticket-card--color16
-              .ticket-card__img
-                img(src="/img/item16.jpg" srcset="/img/item16@2x.jpg 2x" alt="Изображение товара")
-              .ticket-card__info
-                span.ticket-card__label ПРОДАМ
-                .ticket-card__categories
-                  a(href="#") Авто
-                .ticket-card__header
-                  h3.ticket-card__title
-                    a(href="#") Хонда
-                  p.ticket-card__price
-                    span.js-sum 100 000
-                    |  ₽
-                .ticket-card__desc
-                  p Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать...
+          each offer in results
+            li.search-results__item
+              .ticket-card.ticket-card--color05
+                .ticket-card__img
+                  img(src=`/img/${offer.picture}` alt=offer.title)
+                .ticket-card__info
+                  +ticketLabel(offer.type)
+                  .ticket-card__categories
+                    each category in offer.category
+                      a(href="#") #{category}
+                  .ticket-card__header
+                    h3.ticket-card__title
+                      a(href="#") #{offer.title}
+                    p.ticket-card__price
+                      span.js-sum #{offer.sum}
+                      |  ₽
+                  .ticket-card__desc
+                    p #{offer.description}
     section.tickets-list
       h2.visually-hidden Самые новые предложения
       .tickets-list__wrapper
