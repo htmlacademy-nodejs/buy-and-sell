@@ -1,0 +1,80 @@
+
+# Список категорий
+GET http://localhost:3000/api/category HTTP/1.1
+
+###
+
+# Поиск
+GET http://localhost:3000/api/search?query=Play HTTP/1.1
+
+###
+
+# Запрашивает все объявления
+GET http://localhost:3000/api/offers HTTP/1.1
+
+###
+
+# Запрашивает объявление с идентификатором :id
+
+GET http://localhost:3000/api/offers/R_n-aW HTTP/1.1
+
+###
+
+# Удаление объявления с идентификатором :id
+
+DELETE http://localhost:3000/api/offers/R_n-aW HTTP/1.1
+
+###
+
+# Добавление нового объявления
+
+POST http://localhost:3000/api/offers HTTP/1.1
+Content-Type: application/json
+
+{
+  "category": ["Разное"],
+  "description": "При покупке с меня бесплатная доставка в черте города. Две страницы заляпаны свежим кофе. Пользовались бережно и только по большим праздникам., Бонусом отдам все аксессуары.",
+  "picture": "item03.jpg",
+  "title": "Продам новую приставку Sony Playstation 5.",
+  "sum": 42698,
+  "type": "offer"
+}
+
+###
+
+# Обновление объявления
+
+PUT http://localhost:3000/api/offers/R_n-aW HTTP/1.1
+Content-Type: application/json
+
+{
+  "category": ["Авто"],
+  "description": "При покупке с меня бесплатная доставка в черте города. Две страницы заляпаны свежим кофе. Пользовались бережно и только по большим праздникам., Бонусом отдам все аксессуары.",
+  "picture": "item03.jpg",
+  "title": "Новый заголовок",
+  "sum": 900,
+  "type": "offer"
+}
+
+###
+
+# Список комментариев
+
+GET http://localhost:3000/api/offers/R_n-aW/comments HTTP/1.1
+
+###
+
+# Удаляет комментарий
+
+DELETE http://localhost:3000/api/offers/R_n-aW/comments/MY5bSv HTTP/1.1
+
+###
+
+# Добавляет новый комментарий к публикации
+
+POST http://localhost:3000/api/offers/R_n-aW/comments HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "Это новый комментарий"
+}
