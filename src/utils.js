@@ -14,5 +14,3 @@ module.exports.shuffle = (someArray) => {
 
   return someArray;
 };
-
-module.exports.printNumWithLead0 = (number) => (number < 10) ? `0${number}` : number;
