@@ -9,7 +9,7 @@ block content
           form.ticket-form__form.form(action="#" method="post" enctype="multipart/form-data" autocomplete="off")
             .ticket-form__avatar-container.js-preview-container.uploaded
               .ticket-form__avatar.js-preview
-                img(src="/img/item02.jpg" srcset="/img/item02@2x.jpg 2x" alt="")
+                +insertOfferImage(offer)
               .ticket-form__field-avatar
                 input#avatar.visually-hidden.js-file-field(type="file" name="avatar")
                 label(for="avatar")
@@ -18,31 +18,29 @@ block content
             .ticket-form__content
               .ticket-form__row
                 .form__field
-                  input#ticket-name.js-field(type="text" name="ticket-name" value="Мое старое кресло" required="")
+                  input#ticket-name.js-field(type="text" name="ticket-name" value=offer.title required="")
                   label(for="ticket-name") Название
                   span Обязательное поле
               .ticket-form__row
                 .form__field
                   textarea#comment-field.js-field(name="comment" cols="30" rows="10")
-                    | Продам свое старое кресло, чтобы сидеть и читать книги зимними вечерами. Ножки мягкие, мой пол не царапают.
+                    |#{offer.description}
                   label(for="comment-field") Описание
                   span Обязательное поле
               .ticket-form__row
                 select#category-field.form__select.js-multiple-select(name="category" data-label="Выбрать категорию публикации" multiple="")
-                  option(value="1" selected="") Дом
-                  option(value="2" selected="") Спорт и отдых
-                  option(value="3") Авто
-                  option(value="4") Электроника
+                  each category of categories
+                    option(value=category selected=offer.category.includes(category)) #{category}
               .ticket-form__row
                 .form__field.form__field--price
-                  input#price-field.js-field.js-price(type="number" name="price" min="1" value="4000" required="")
+                  input#price-field.js-field.js-price(type="number" name="price" min="1" value=offer.price required="")
                   label(for="price-field") Цена
                   span Обязательное поле
                 .form__switch.switch
                   .switch__item
-                    input#buy-field.visually-hidden(type="radio" name="action" value="buy" checked="")
+                    input#buy-field.visually-hidden(type="radio" name="action" value="buy" checked=(offer.type === 'OFFER'))
                     label.switch__button(for="buy-field") Куплю
                   .switch__item
-                    input#sell-field.visually-hidden(type="radio" name="action" value="sell")
+                    input#sell-field.visually-hidden(type="radio" name="action" value="sell" checked=(offer.type === 'SALE'))
                     label.switch__button(for="sell-field") Продам
             button.form__button.btn.btn--medium.js-button(type="submit") Сохранить
