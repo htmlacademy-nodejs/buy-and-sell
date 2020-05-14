@@ -2,11 +2,11 @@
 
 const fs = require(`fs`).promises;
 const FILENAME = `mocks.json`;
-let data = null;
+let data = [];
 
 const getMockData = async () => {
-  if (data !== null) {
-    return Promise.resolve(data);
+  if (data.length > 0) {
+    return data;
   }
 
   try {
@@ -14,19 +14,9 @@ const getMockData = async () => {
     data = JSON.parse(fileContent);
   } catch (err) {
     console.log(err);
-    return Promise.reject(err);
   }
 
-  return Promise.resolve(data);
+  return data;
 };
-
-(async () => {
-  try {
-    const fileContent = await fs.readFile(FILENAME);
-    data = JSON.parse(fileContent);
-  } catch (err) {
-    console.log(err);
-  }
-})();
 
 module.exports = getMockData;

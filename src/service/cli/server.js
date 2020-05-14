@@ -4,7 +4,6 @@ const chalk = require(`chalk`);
 const express = require(`express`);
 const {HttpCode, API_PREFIX} = require(`../../constants`);
 const routes = require(`../api`);
-const getMockData = require(`../lib/get-mock-data`);
 
 const DEFAULT_PORT = 3000;
 
@@ -24,8 +23,6 @@ module.exports = {
     const port = Number.parseInt(customPort, 10) || DEFAULT_PORT;
 
     try {
-      await getMockData();
-
       app.listen(port, (err) => {
         if (err) {
           return console.error(`Ошибка при создании сервера`, err);
