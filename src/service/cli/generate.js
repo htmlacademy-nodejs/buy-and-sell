@@ -21,18 +21,18 @@ const FILE_CATEGORIES_PATH = `./data/categories.txt`;
 const FILE_COMMENTS_PATH = `./data/comments.txt`;
 
 const OfferType = {
-  offer: `offer`,
-  sale: `sale`,
+  OFFER: `offer`,
+  SALE: `sale`,
 };
 
 const SumRestrict = {
-  min: 1000,
-  max: 100000,
+  MIN: 1000,
+  MAX: 100000,
 };
 
 const PictureRestrict = {
-  min: 1,
-  max: 16,
+  MIN: 1,
+  MAX: 16,
 };
 
 const readContent = async (filePath) => {
@@ -62,10 +62,10 @@ const generateOffers = (count, titles, categories, sentences, comments) => (
     category: [categories[getRandomInt(0, categories.length - 1)]],
     comments: generateComments(getRandomInt(1, MAX_COMMENTS), comments),
     description: shuffle(sentences).slice(1, 5).join(` `),
-    picture: getPictureFileName(getRandomInt(PictureRestrict.min, PictureRestrict.max)),
+    picture: getPictureFileName(getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)),
     title: titles[getRandomInt(0, titles.length - 1)],
     type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
-    sum: getRandomInt(SumRestrict.min, SumRestrict.max),
+    sum: getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
   }))
 );
 
