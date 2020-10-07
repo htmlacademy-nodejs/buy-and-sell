@@ -10,7 +10,6 @@ module.exports = (app, service) => {
 
   route.get(`/`, (req, res) => {
     const {query = ``} = req.query;
-
     if (!query) {
       res.status(HttpCode.BAD_REQUEST).json([]);
       return;
