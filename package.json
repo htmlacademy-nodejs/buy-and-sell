@@ -7,8 +7,8 @@
     "test": "npm run eslint && npm run jest",
     "jest": "jest",
     "eslint": "eslint --ext .js src/",
-    "start": "cross-env LOG_LEVEL=error node ./src/service/service.js",
-    "start::debug": "cross-env LOG_LEVEL=info NODE_ENV=development node ./src/service/service.js",
+    "start": "cross-env LOG_LEVEL=error node -r dotenv/config ./src/service/service.js",
+    "start::debug": "cross-env LOG_LEVEL=info NODE_ENV=development node -r dotenv/config ./src/service/service.js",
     "start-front-server": "node ./src/express/express.js"
   },
   "repository": {
@@ -22,20 +22,27 @@
   },
   "homepage": "https://github.com/htmlacademy-nodejs/buy-and-sell#readme",
   "devDependencies": {
+    "dotenv": "8.2.0",
     "eslint": "6.8.0",
     "eslint-config-htmlacademy": "0.5.2",
     "jest": "26.4.2",
+    "pg": "8.4.2",
     "pino-pretty": "4.2.1",
+    "sequelize": "6.3.5",
+    "sqlite3": "5.0.0",
     "supertest": "4.0.2"
   },
   "dependencies": {
     "axios": "0.20.0",
     "chalk": "3.0.0",
     "cross-env": "7.0.2",
+    "dotenv": "8.2.0",
     "express": "4.17.1",
     "multer": "1.4.2",
     "nanoid": "3.1.3",
+    "pg": "8.4.2",
     "pino": "6.6.0",
-    "pug": "2.0.4"
+    "pug": "2.0.4",
+    "sequelize": "6.3.5"
   }
 }
