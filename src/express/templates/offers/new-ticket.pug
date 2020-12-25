@@ -28,7 +28,7 @@ block content
               .ticket-form__row
                 select#category-field.form__select.js-multiple-select(name="category" data-label="Выбрать категорию публикации")
                   each category in categories
-                    option(value=category) #{category}
+                    option(value=category.id) #{category.name}
               .ticket-form__row
                 .form__field.form__field--price
                   input#price-field.js-field.js-price(type="number" name="price" min="1" required="")
