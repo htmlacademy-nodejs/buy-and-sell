@@ -6,12 +6,58 @@ head
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
   title Куплю. Продам
   link(rel='stylesheet' href='/css/style.min.css')
+  style.
+    a.active{
+      pointer-events: none;
+    }
 body
+  -
+    const getRandomInt = (max) => Math.ceil(Math.random()*max);
+
+  mixin ticketCard()
+    .ticket-card(class = `ticket-card--color0${getRandomInt(8)}`)
+      block
+
   mixin ticketLabel(type)
     span(class!=attributes.class || `ticket-card__label`) #{type === `OFFER` ? `Куплю` : `Продам`}
 
   mixin insertOfferImage(offer)
     img(src=`/img/${offer.picture ? offer.picture : 'blank.png'}` alt=offer.title)
+
+  mixin categoryImage(category)
+    -
+      const idPadded = `0${getRandomInt(6)}`
+
+    img(src=`/img/cat${idPadded}.jpg` srcset=`/img/cat${idPadded}@2x.jpg 2x` alt=category.name)
+
+  mixin pagination(page, totalPages, width, prefix)
+    -
+      let start = page - width;
+      let end = page + width;
+      if (start < 1) {
+        end += 1 - start;
+        start = 1;
+      }
+      if (end > totalPages) {
+        start -= end - totalPages;
+        end = totalPages;
+      }
+      if (start < 1) {
+        start = 1;
+      }
+      let i = start - 1
+
+    .tickets-list__pagination
+      ul.pagination
+        if start > 1
+          li
+            a(href=`${prefix}page=${page - 1}`) Назад
+        while i++ < end
+          li
+            a(class={active: i === page} href=`${prefix}page=${i}`)= i
+        if end < totalPages
+          li
+            a(href=`${prefix}page=${page + 1}`) Вперёд
 
   include partials/header.pug
   block content
