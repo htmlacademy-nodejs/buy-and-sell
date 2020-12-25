@@ -7,8 +7,8 @@
     "test": "npm run eslint && npm run jest",
     "jest": "jest",
     "eslint": "eslint --ext .js src/",
-    "start": "cross-env LOG_LEVEL=error node ./src/service/service.js",
-    "start::debug": "cross-env LOG_LEVEL=info NODE_ENV=development node ./src/service/service.js",
+    "start": "cross-env LOG_LEVEL=error node -r dotenv/config ./src/service/service.js",
+    "start::debug": "cross-env LOG_LEVEL=info NODE_ENV=development node -r dotenv/config ./src/service/service.js",
     "start-front-server": "node ./src/express/index.js"
   },
   "repository": {
@@ -22,10 +22,13 @@
   },
   "homepage": "https://github.com/htmlacademy-nodejs/buy-and-sell#readme",
   "devDependencies": {
+    "dotenv": "8.2.0",
     "eslint": "6.8.0",
     "eslint-config-htmlacademy": "0.5.2",
     "jest": "26.4.2",
+    "pg": "8.4.2",
     "pino-pretty": "4.2.1",
+    "sequelize": "6.3.5",
     "supertest": "4.0.2"
   },
   "dependencies": {
