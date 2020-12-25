@@ -2,25 +2,32 @@
 
 const express = require(`express`);
 const request = require(`supertest`);
+const Sequelize = require(`sequelize`);
 
+const initDB = require(`../lib/init-db`);
 const search = require(`./search`);
 const DataService = require(`../data-service/search`);
 
 const {HttpCode} = require(`../../constants`);
 
-const mockData = [
+const mockCategories = [
+  `Книги`,
+  `Цветы`,
+  `Животные`,
+  `Разное`
+];
+
+const mockOffers = [
   {
-    "id": `Fg0ikD`,
-    "category": [
-      `Книги`
+    "categories": [
+      `Книги`,
+      `Разное`
     ],
     "comments": [
       {
-        "id": `wsFw-O`,
         "text": `Почему в таком ужасном состоянии?`
       },
       {
-        "id": `aqEKjM`,
         "text": `Продаю в связи с переездом. Отрываю от сердца. А где блок питания?`
       }
     ],
@@ -31,25 +38,21 @@ const mockData = [
     "sum": 79555
   },
   {
-    "id": `P38xSL`,
-    "category": [
-      `Цветы`
+    "categories": [
+      `Цветы`,
+      `Животные`
     ],
     "comments": [
       {
-        "id": `C4szXa`,
         "text": `Неплохо, но дорого. Совсем немного... Оплата наличными или перевод на карту?`
       },
       {
-        "id": `QzHcjD`,
         "text": `С чем связана продажа? Почему так дешёво? Вы что?! В магазине дешевле. Продаю в связи с переездом. Отрываю от сердца.`
       },
       {
-        "id": `x2uXYW`,
         "text": `Неплохо, но дорого. Совсем немного...`
       },
       {
-        "id": `RmlbJV`,
         "text": `Вы что?! В магазине дешевле.`
       }
     ],
@@ -60,13 +63,11 @@ const mockData = [
     "sum": 55460
   },
   {
-    "id": `eb5Shc`,
-    "category": [
+    "categories": [
       `Животные`
     ],
     "comments": [
       {
-        "id": `NXU8v2`,
         "text": `Оплата наличными или перевод на карту? Продаю в связи с переездом. Отрываю от сердца. С чем связана продажа? Почему так дешёво?`
       }
     ],
@@ -78,9 +79,16 @@ const mockData = [
   }
 ];
 
+const mockDB = new Sequelize(`sqlite::memory:`, {logging: false});
+
+
 const app = express();
 app.use(express.json());
-search(app, new DataService(mockData));
+
+beforeAll(async () => {
+  await initDB(mockDB, {categories: mockCategories, offers: mockOffers});
+  search(app, new DataService(mockDB));
+});
 
 describe(`API returns offer based on search query`, () => {
 
@@ -98,7 +106,7 @@ describe(`API returns offer based on search query`, () => {
 
   test(`1 offer found`, () => expect(response.body.length).toBe(1));
 
-  test(`Offer has correct id`, () => expect(response.body[0].id).toBe(`Fg0ikD`));
+  test(`Offer has correct title`, () => expect(response.body[0].title).toBe(`Продам новую приставку Sony Playstation 5`));
 });
 
 test(`API returns code 404 if nothing is found`,
