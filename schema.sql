@@ -41,3 +41,5 @@ CREATE TABLE offer_categories(
   FOREIGN KEY (offer_id) REFERENCES offers(id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
+
+CREATE INDEX ON offers(title);
