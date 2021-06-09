@@ -10,6 +10,13 @@ head
     a.active{
       pointer-events: none;
     }
+    .server-error{
+      border-radius: 10px;
+      color: white;
+      background-color: tomato;
+      margin: 20px 0;
+      padding: 10px;
+    }
 body
   -
     const getRandomInt = (max) => Math.ceil(Math.random()*max);
@@ -31,15 +38,15 @@ body
     -
       let start = page - width;
       let end = page + width;
-      if(start < 1){
+      if (start < 1) {
         end += 1 - start;
         start = 1;
       }
-      if(end > totalPages){
+      if (end > totalPages) {
         start -= end - totalPages;
         end = totalPages;
       }
-      if(start < 1){
+      if (start < 1){
         start = 1;
       }
       let i = start - 1
@@ -55,7 +62,9 @@ body
         if end < totalPages
           li
             a(href=`${prefix}page=${page + 1}`) Вперёд
-
+  mixin errorMessage(message)
+    if message
+      .server-error= message
   include partials/header.pug
   block content
   include partials/footer.pug

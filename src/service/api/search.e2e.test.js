@@ -5,6 +5,7 @@ const request = require(`supertest`);
 const Sequelize = require(`sequelize`);
 
 const initDB = require(`../lib/init-db`);
+const passwordUtils = require(`../lib/password`);
 const search = require(`./search`);
 const DataService = require(`../data-service/search`);
 
@@ -17,17 +18,35 @@ const mockCategories = [
   `Разное`
 ];
 
+const mockUsers = [
+  {
+    name: `Иван Иванов`,
+    email: `ivanov@example.com`,
+    passwordHash: passwordUtils.hashSync(`ivanov`),
+    avatar: `avatar01.jpg`
+  },
+  {
+    name: `Пётр Петров`,
+    email: `petrov@example.com`,
+    passwordHash: passwordUtils.hashSync(`petrov`),
+    avatar: `avatar02.jpg`
+  }
+];
+
 const mockOffers = [
   {
+    "user": `ivanov@example.com`,
     "categories": [
       `Книги`,
       `Разное`
     ],
     "comments": [
       {
+        "user": `ivanov@example.com`,
         "text": `Почему в таком ужасном состоянии?`
       },
       {
+        "user": `petrov@example.com`,
         "text": `Продаю в связи с переездом. Отрываю от сердца. А где блок питания?`
       }
     ],
@@ -38,21 +57,26 @@ const mockOffers = [
     "sum": 79555
   },
   {
+    "user": `petrov@example.com`,
     "categories": [
       `Цветы`,
       `Животные`
     ],
     "comments": [
       {
+        "user": `ivanov@example.com`,
         "text": `Неплохо, но дорого. Совсем немного... Оплата наличными или перевод на карту?`
       },
       {
+        "user": `petrov@example.com`,
         "text": `С чем связана продажа? Почему так дешёво? Вы что?! В магазине дешевле. Продаю в связи с переездом. Отрываю от сердца.`
       },
       {
+        "user": `ivanov@example.com`,
         "text": `Неплохо, но дорого. Совсем немного...`
       },
       {
+        "user": `petrov@example.com`,
         "text": `Вы что?! В магазине дешевле.`
       }
     ],
@@ -63,11 +87,13 @@ const mockOffers = [
     "sum": 55460
   },
   {
+    "user": `ivanov@example.com`,
     "categories": [
       `Животные`
     ],
     "comments": [
       {
+        "user": `petrov@example.com`,
         "text": `Оплата наличными или перевод на карту? Продаю в связи с переездом. Отрываю от сердца. С чем связана продажа? Почему так дешёво?`
       }
     ],
@@ -86,7 +112,7 @@ const app = express();
 app.use(express.json());
 
 beforeAll(async () => {
-  await initDB(mockDB, {categories: mockCategories, offers: mockOffers});
+  await initDB(mockDB, {categories: mockCategories, offers: mockOffers, users: mockUsers});
   search(app, new DataService(mockDB));
 });
 

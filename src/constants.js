@@ -19,6 +19,13 @@ module.exports.HttpCode = {
   BAD_REQUEST: 400,
 };
 
+module.exports.HttpMethod = {
+  GET: `GET`,
+  POST: `POST`,
+  PUT: `PUT`,
+  DELETE: `DELETE`
+};
+
 module.exports.API_PREFIX = `/api`;
 
 module.exports.MAX_ID_LENGTH = 6;

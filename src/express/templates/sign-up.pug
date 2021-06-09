@@ -3,14 +3,14 @@ extends layout.pug
 block content
   main.page-content
       section.sign-up
-        form.sign-up__form.form(action="#" method="post" enctype="multipart/form-data" autocomplete="off")
+        form.sign-up__form.form(action="/register" method="post" enctype="multipart/form-data" autocomplete="off")
           .sign-up__title
             h2 Регистрация
             a.sign-up__link(href="/login") Вход
           .sign-up__avatar-container.js-preview-container
             .sign-up__avatar.js-preview
             .sign-up__field-avatar
-              input#avatar.visually-hidden.js-file-field(type="file" name="avatar")
+              input#avatar.visually-hidden.js-file-field(type="file" name="avatar" required="")
               label(for="avatar")
                 span.sign-up__text-upload Загрузить аватар…
                 span.sign-up__text-another Загрузить другой аватар…
@@ -30,4 +30,5 @@ block content
             input#user-password-again.js-field(type="password" name="user-password-again" required="")
             label(for="user-password-again") Пароль еще раз
             span Обязательное поле
+          +errorMessage(error)
           button.sign-up__button.btn.btn--medium.js-button(type="submit" disabled="") Создать аккаунт
