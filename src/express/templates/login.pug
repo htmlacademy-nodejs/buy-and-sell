@@ -3,7 +3,7 @@ extends layout.pug
 block content
   main.page-content
     section.login
-      form.login__form.form(action="#" method="post" enctype="multipart/form-data")
+      form.login__form.form(action="/login" method="post")
         .login__title
           a.login__link(href="/register") Регистрация
           h2 Вход
@@ -15,4 +15,5 @@ block content
           input#user-password.js-field(type="password" name="user-password" required="")
           label(for="user-password") Пароль
           span Обязательное поле
+        +errorMessage(error)
         button.login__button.btn.btn--medium.js-button(type="submit" disabled="") Войти

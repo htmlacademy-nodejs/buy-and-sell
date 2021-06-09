@@ -6,10 +6,12 @@ block content
       .ticket-form__wrapper
         h1.ticket-form__title Редактировать публикацию
         .ticket-form__tile
-          form.ticket-form__form.form(action="#" method="post" enctype="multipart/form-data" autocomplete="off")
+          form.ticket-form__form.form(action=`/offers/edit/${id}` method="post" enctype="multipart/form-data" autocomplete="off")
+            input(type="hidden" name="_csrf" value=csrfToken)
             .ticket-form__avatar-container.js-preview-container.uploaded
               .ticket-form__avatar.js-preview
                 img(src=`/img/${offer.picture}` alt="")
+              input(type="hidden" name="old-image" value=offer.picture)
               .ticket-form__field-avatar
                 input#avatar.visually-hidden.js-file-field(type="file" name="avatar")
                 label(for="avatar")
@@ -33,14 +35,15 @@ block content
                     option(value=category.id selected=offer.categories.some(item => item.id === category.id)) #{category.name}
               .ticket-form__row
                 .form__field.form__field--price
-                  input#price-field.js-field.js-price(type="number" name="price" min="1" value=offer.price required="")
+                  input#price-field.js-field.js-price(type="number" name="price" min="1" value=offer.sum required="")
                   label(for="price-field") Цена
                   span Обязательное поле
                 .form__switch.switch
                   .switch__item
-                    input#buy-field.visually-hidden(type="radio" name="action" value="buy" checked=(offer.type === 'OFFER'))
+                    input#buy-field.visually-hidden(type="radio" name="action" value="OFFER" checked=(offer.type === 'OFFER'))
                     label.switch__button(for="buy-field") Куплю
                   .switch__item
-                    input#sell-field.visually-hidden(type="radio" name="action" value="sell" checked=(offer.type === 'SALE'))
+                    input#sell-field.visually-hidden(type="radio" name="action" value="SALE" checked=(offer.type === 'SALE'))
                     label.switch__button(for="sell-field") Продам
+            +errorMessage(error)
             button.form__button.btn.btn--medium.js-button(type="submit") Сохранить
