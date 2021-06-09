@@ -28,10 +28,10 @@ block content
                 span #{formatDate(offer.createdAt)}
               p
                 b Автор:
-                a(href="#") Денис Шкатулкин
+                a(href="#") #{offer.users.name}
               p
                 b Контакты:
-                a(href="mailto:shkatulkin@ya.ru") shkatulkin@ya.ru
+                a(href=`mailto:${offer.users.email}`) #{offer.users.email}
             ul.ticket__tags
               each category in offer.categories
                 li
@@ -42,7 +42,9 @@ block content
         .ticket__comments
           h2.ticket__subtitle Комментарии
           .ticket__comment-form
-            form.form.comment-form(action="#" method="post")
+            form.form.comment-form(action=`/offers/${id}/comments` method="post" enctype="application/x-www-form-urlencoded"
+             autocomplete="off")
+              input(type="hidden" name="_csrf" value=csrfToken)
               .comment-form__header
                 a.comment-form__avatar.avatar(href="#")
                   img(src="/img/avatar.jpg" srcset="/img/avatar@2x.jpg 2x" alt="Аватар пользователя")
@@ -52,6 +54,7 @@ block content
                   textarea#comment-field.js-field(name="comment" cols="30" rows="10" maxlength="400" minlength="50") Нормальное вообще кресло! А как насч
                   label(for="comment-field") Текст комментария
                   span Обязательное поле
+              +errorMessage(error)
               button.comment-form__button.btn.btn--white.js-button(type="submit" disabled="") Отправить
           .ticket__comments-list
             ul.comments-list
@@ -60,7 +63,7 @@ block content
                   .comment-card
                     .comment-card__header
                       a.comment-card__avatar.avatar(href="#")
-                        img(src="/img/avatar02.jpg" srcset="/img/avatar02@2x.jpg 2x" alt="Аватар пользователя")
-                      p.comment-card__author Георгий Шпиц
+                        img(src=`/img/${comment.users.avatar}` alt="Аватар пользователя")
+                      p.comment-card__author #{comment.users.name}
                     .comment-card__content
                       p #{comment.text}
