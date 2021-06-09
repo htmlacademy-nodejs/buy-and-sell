@@ -16,3 +16,7 @@ module.exports.shuffle = (someArray) => {
 };
 
 module.exports.ensureArray = (value) => Array.isArray(value) ? value : [value];
+
+module.exports.prepareErrors = (errors) => {
+  return errors.response.data.split(`\n`);
+};

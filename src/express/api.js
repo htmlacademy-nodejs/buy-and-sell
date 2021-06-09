@@ -2,13 +2,13 @@
 
 const axios = require(`axios`);
 
+const {HttpMethod} = require(`../constants`);
 const TIMEOUT = 1000;
 
 const port = process.env.API_PORT || 3000;
 const defaultURL = `http://localhost:${port}/api/`;
 
 class API {
-
   constructor(baseURL, timeout) {
     this._http = axios.create({
       baseURL,
@@ -27,6 +27,7 @@ class API {
 
   getOffer(id, comments) {
     return this._load(`/offers/${id}`, {params: {comments}});
+
   }
 
   search(query) {
@@ -39,8 +40,36 @@ class API {
 
   createOffer(data) {
     return this._load(`/offers`, {
-      method: `POST`,
+      method: HttpMethod.POST,
       data
+    });
+  }
+
+  editOffer(id, data) {
+    return this._load(`/offers/${id}`, {
+      method: HttpMethod.PUT,
+      data
+    });
+  }
+
+  createComment(id, data) {
+    return this._load(`/offers/${id}/comments`, {
+      method: HttpMethod.POST,
+      data
+    });
+  }
+
+  createUser(data) {
+    return this._load(`/user`, {
+      method: HttpMethod.POST,
+      data
+    });
+  }
+
+  auth(email, password) {
+    return this._load(`/user/auth`, {
+      method: HttpMethod.POST,
+      data: {email, password}
     });
   }
 }

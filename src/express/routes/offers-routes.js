@@ -1,37 +1,46 @@
 'use strict';
 
 const {Router} = require(`express`);
-const multer = require(`multer`);
-const path = require(`path`);
-const {nanoid} = require(`nanoid`);
-const {ensureArray} = require(`../../utils`);
+const csrf = require(`csurf`);
 
-const UPLOAD_DIR = `../upload/img/`;
-
-const uploadDirAbsolute = path.resolve(__dirname, UPLOAD_DIR);
+const upload = require(`../middlewares/upload`);
+const auth = require(`../middlewares/auth`);
+const {ensureArray, prepareErrors} = require(`../../utils`);
 
 const api = require(`../api`).getAPI();
 const offersRouter = new Router();
 
-const storage = multer.diskStorage({
-  destination: uploadDirAbsolute,
-  filename: (req, file, cb) => {
-    const uniqueName = nanoid(10);
-    const extension = file.originalname.split(`.`).pop();
-    cb(null, `${uniqueName}.${extension}`);
-  }
+const csrfProtection = csrf();
+
+const getAddOfferData = () => {
+  return api.getCategories();
+};
+
+const getEditOfferData = async (offerId) => {
+  const [offer, categories] = await Promise.all([
+    api.getOffer(offerId),
+    api.getCategories()
+  ]);
+  return [offer, categories];
+};
+
+const getViewOfferData = (offerId, comments) => {
+  return api.getOffer(offerId, comments);
+};
+
+offersRouter.get(`/category/:id`, (req, res) => {
+  const {user} = req.session;
+  res.render(`category`, {user});
 });
 
-const upload = multer({storage});
-
-offersRouter.get(`/category/:id`, (req, res) => res.render(`category`));
-
-offersRouter.get(`/add`, async (req, res) => {
-  const categories = await api.getCategories();
-  res.render(`offers/new-ticket`, {categories});
+offersRouter.get(`/add`, auth, csrfProtection, async (req, res) => {
+  const {user} = req.session;
+  const categories = await getAddOfferData();
+  res.render(`offers/new-ticket`, {categories, user, csrfToken: req.csrfToken()});
 });
 
-offersRouter.post(`/add`, upload.single(`avatar`), async (req, res) => {
+offersRouter.post(`/add`, auth, upload.single(`avatar`), csrfProtection, async (req, res) => {
+  const {user} = req.session;
   const {body, file} = req;
   const offerData = {
     picture: file ? file.filename : ``,
@@ -39,29 +48,68 @@ offersRouter.post(`/add`, upload.single(`avatar`), async (req, res) => {
     type: body.action,
     description: body.comment,
     title: body[`ticket-name`],
-    categories: ensureArray(body.category)
+    categories: ensureArray(body.category),
+    userId: user.id
   };
   try {
     await api.createOffer(offerData);
     res.redirect(`/my`);
-  } catch (error) {
-    res.redirect(`back`);
+  } catch (errors) {
+    const validationMessages = prepareErrors(errors);
+    const categories = await getAddOfferData();
+    res.render(`offers/new-ticket`, {categories, user, validationMessages, csrfToken: req.csrfToken()});
   }
 });
 
-offersRouter.get(`/edit/:id`, async (req, res) => {
+offersRouter.get(`/edit/:id`, auth, csrfProtection, async (req, res) => {
+  const {user} = req.session;
   const {id} = req.params;
-  const [offer, categories] = await Promise.all([
-    api.getOffer(id),
-    api.getCategories()
-  ]);
-  res.render(`offers/ticket-edit`, {offer, categories});
+  const [offer, categories] = await getEditOfferData(id);
+  res.render(`offers/ticket-edit`, {id, offer, categories, user, csrfToken: req.csrfToken()});
 });
 
-offersRouter.get(`/:id`, async (req, res) => {
+offersRouter.post(`/edit/:id`, auth, upload.single(`avatar`), csrfProtection, async (req, res) => {
+  const {user} = req.session;
+  const {body, file} = req;
   const {id} = req.params;
-  const offer = await api.getOffer(id, true);
-  res.render(`offers/ticket`, {offer});
+  const offerData = {
+    picture: file ? file.filename : body[`old-image`],
+    sum: body.price,
+    type: body.action,
+    description: body.comment,
+    title: body[`ticket-name`],
+    categories: ensureArray(body.category),
+    userId: user.id
+  };
+  try {
+    await api.editOffer(id, offerData);
+    res.redirect(`/my`);
+  } catch (errors) {
+    const validationMessages = prepareErrors(errors);
+    const [offer, categories] = await getEditOfferData(id);
+    res.render(`offers/ticket-edit`, {id, offer, categories, user, validationMessages, csrfToken: req.csrfToken()});
+  }
+});
+
+offersRouter.get(`/:id`, csrfProtection, async (req, res) => {
+  const {user} = req.session;
+  const {id} = req.params;
+  const offer = await getViewOfferData(id, true);
+  res.render(`offers/ticket`, {offer, id, user, csrfToken: req.csrfToken()});
+});
+
+offersRouter.post(`/:id/comments`, auth, csrfProtection, async (req, res) => {
+  const {user} = req.session;
+  const {id} = req.params;
+  const {comment} = req.body;
+  try {
+    await api.createComment(id, {userId: user.id, text: comment});
+    res.redirect(`/offers/${id}`);
+  } catch (errors) {
+    const validationMessages = prepareErrors(errors);
+    const offer = await getViewOfferData(id, true);
+    res.render(`offers/ticket`, {offer, id, user, validationMessages, csrfToken: req.csrfToken()});
+  }
 });
 
 module.exports = offersRouter;
