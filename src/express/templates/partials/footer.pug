@@ -11,9 +11,8 @@ footer.page-footer
 
     .page-footer__col
       ul.page-footer__nav
-        if user
-          li
+        li
+          if user
             a(href="/offers/add") Создать объявление
-        else
-          li
+          else
             a(href="/register") Вход и регистрация
