@@ -1,10 +1,19 @@
 section.categories-list
-      h1.visually-hidden Сервис объявлений "Куплю - продам"
-      ul.categories-list__wrapper
-        each category of categories
+  h1.visually-hidden Сервис объявлений "Куплю - продам"
+  ul.categories-list__wrapper
+    each category of categories
+      if (!fullView)
+        if (category.count > 0)
           li.categories-list__item
-            a.category-tile.category-tile--default(href="#")
+            a.category-tile.category-tile--default(href=`/offers/category/${category.id}`)
               span.category-tile__image
                 +categoryImage(category)
-              span.category-tile__label #{category.name}
+              span.category-tile__label #{category.name} &nbsp;
                 span.category-tile__qty.js-qty #{category.count}
+      else
+        li.categories-list__item
+          a.category-tile.category-tile--default(href=`/offers/category/${category.id}`)
+            span.category-tile__image
+              +categoryImage(category)
+            span.category-tile__label #{category.name} &nbsp;
+              span.category-tile__qty.js-qty #{category.count}

@@ -1,0 +1,16 @@
+template(id='card-template')
+  li.tickets-list__item
+    +ticketCard()
+      .ticket-card__img
+        img(src="/img/" alt="")
+      .ticket-card__info
+        span.ticket-card__label
+        .ticket-card__categories
+        .ticket-card__header
+          h3.ticket-card__title
+            a(href="")
+          p.ticket-card__price
+            span.js-sum
+            |  ₽
+        .ticket-card__desc
+          p

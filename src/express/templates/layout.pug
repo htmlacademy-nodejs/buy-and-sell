@@ -17,13 +17,35 @@ head
       margin: 20px 0;
       padding: 10px;
     }
+    .client-error{
+      position: fixed;
+      width: 100%;
+      padding: 10px;
+      color: white;
+      text-align: center;
+      z-index: 1;
+    }
+    .client-error__success {
+      background-color: darkseagreen;
+    }
+    .client-error__fail {
+      background-color: tomato;
+    }
+    .comment-card__date{
+      margin-left: auto;
+    }
 body
   -
+    const MAX_DESCRIPTION_LENGTH = 55;
     const getRandomInt = (max) => Math.ceil(Math.random()*max);
 
   mixin ticketCard()
     .ticket-card(class = `ticket-card--color0${getRandomInt(8)}`)
       block
+
+  mixin tiketCardDescription(description)
+    .ticket-card__desc
+      p #{description.slice(0, MAX_DESCRIPTION_LENGTH)}
 
   mixin ticketLabel(type)
     span(class!=attributes.class || `ticket-card__label`) #{type === `OFFER` ? `Куплю` : `Продам`}
@@ -74,5 +96,9 @@ body
   include partials/header.pug
   block content
   include partials/footer.pug
+  include partials/offer-template.pug
+  script(src='https://cdn.socket.io/4.0.1/socket.io.js')
   script(src='/js/vendor.js')
   script(src='/js/main.js')
+  script(src='/js/content.js')
+  script(src='/js/socket.js')

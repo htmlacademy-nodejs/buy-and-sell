@@ -21,55 +21,76 @@ class API {
     return response.data;
   }
 
-  getOffers({offset, limit, comments} = {}) {
-    return this._load(`/offers`, {params: {offset, limit, comments}});
+  getOffers({offset, limit, userId, categoryId, withComments} = {}) {
+    return this._load(`/offers`, {params: {limit, offset, userId, categoryId, withComments}});
   }
 
-  getOffer(id, comments) {
-    return this._load(`/offers/${id}`, {params: {comments}});
-
+  getOffer({id, userId, withComments}) {
+    return this._load(`/offers/${id}`, {params: {userId, withComments}});
   }
 
-  search(query) {
+  search({query}) {
     return this._load(`/search`, {params: {query}});
   }
 
-  getCategories(count) {
-    return this._load(`/category`, {params: {count}});
+  getCategory({categoryId, limit, offset}) {
+    return this._load(`/category/${categoryId}`, {params: {limit, offset}});
   }
 
-  createOffer(data) {
+  getCategories({withCount}) {
+    return this._load(`/category`, {params: {withCount}});
+  }
+
+  createOffer({data}) {
     return this._load(`/offers`, {
       method: HttpMethod.POST,
       data
     });
   }
 
-  editOffer(id, data) {
+  editOffer({id, data}) {
     return this._load(`/offers/${id}`, {
       method: HttpMethod.PUT,
       data
     });
   }
 
-  createComment(id, data) {
+  createComment({id, data}) {
     return this._load(`/offers/${id}/comments`, {
       method: HttpMethod.POST,
       data
     });
   }
 
-  createUser(data) {
+  createUser({data}) {
     return this._load(`/user`, {
       method: HttpMethod.POST,
       data
     });
   }
 
-  auth(email, password) {
+  auth({email, password}) {
     return this._load(`/user/auth`, {
       method: HttpMethod.POST,
       data: {email, password}
+    });
+  }
+
+  removeOffer({id, userId}) {
+    return this._load(`/offers/${id}`, {
+      method: HttpMethod.DELETE,
+      data: {
+        userId
+      }
+    });
+  }
+
+  removeComment({id, userId, commentId}) {
+    return this._load(`/offers/${id}/comments/${commentId}`, {
+      method: HttpMethod.DELETE,
+      data: {
+        userId
+      }
     });
   }
 }

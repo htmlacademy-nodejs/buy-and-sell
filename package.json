@@ -7,8 +7,10 @@
     "test": "npm run eslint && npm run jest",
     "jest": "jest",
     "eslint": "eslint --ext .js src/",
-    "start": "cross-env LOG_LEVEL=error node -r dotenv/config ./src/service/service.js",
-    "start::debug": "cross-env LOG_LEVEL=info NODE_ENV=development node -r dotenv/config ./src/service/service.js",
+    "start": "npm run start-servers",
+    "start-servers": "concurrently \"npm run start-back-server\" \"npm run start-front-server\"",
+    "start-back-server": "cross-env LOG_LEVEL=error node -r dotenv/config ./src/service/service.js --server",
+    "start-back-server::debug": "cross-env LOG_LEVEL=info NODE_ENV=development node -r dotenv/config ./src/service/service.js --server",
     "start-front-server": "node -r dotenv/config ./src/express/express.js"
   },
   "repository": {
@@ -33,6 +35,7 @@
     "axios": "0.20.0",
     "bcrypt": "5.0.0",
     "chalk": "3.0.0",
+    "concurrently": "6.2.1",
     "connect-session-sequelize": "7.1.1",
     "cross-env": "7.0.2",
     "csurf": "1.11.0",
@@ -45,6 +48,7 @@
     "pg": "8.4.2",
     "pino": "6.6.0",
     "pug": "3.0.2",
-    "sequelize": "6.3.5"
+    "sequelize": "6.3.5",
+    "socket.io": "4.1.3"
   }
 }

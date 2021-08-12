@@ -2,10 +2,25 @@ extends ../layout.pug
 
 block content
   -
-    const formatDate = (dateString) => {
+    const TypeFormateDate = {
+      OFFER: 'offer',
+      COMMENT: 'comment'
+    };
+
+    const formatDate = (type, dateString) => {
       const date = new Date(dateString);
-      return date.toLocaleString();
+      let options;
+      switch (type) {
+        case TypeFormateDate.OFFER:
+          options = {day: '2-digit', month: 'long', year: 'numeric'};
+          break;
+        case TypeFormateDate.COMMENT:
+          options = {day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'};
+          break;
+      }
+      return date.toLocaleString('ru-RU', options);
     }
+
   main.page-content
     section.ticket
       .ticket__wrapper
@@ -25,45 +40,54 @@ block content
             .ticket__data
               p
                 b Дата добавления:
-                span #{formatDate(offer.createdAt)}
+                span  #{formatDate(TypeFormateDate.OFFER, offer.createdAt)}
               p
                 b Автор:
-                a(href="#") #{offer.users.name}
+                a(href="/my") #{offer.users.name}
               p
                 b Контакты:
                 a(href=`mailto:${offer.users.email}`) #{offer.users.email}
             ul.ticket__tags
               each category of offer.categories
                 li
-                  a.category-tile.category-tile--small(href="#")
+                  a.category-tile.category-tile--small(href=`/offers/category/${category.id}`)
                     span.category-tile__image
                       +categoryImage(category)
                     span.category-tile__label #{category.name}
         .ticket__comments
           h2.ticket__subtitle Комментарии
-          .ticket__comment-form
-            form.form.comment-form(action=`/offers/${id}/comments` method="post" enctype="application/x-www-form-urlencoded"
-             autocomplete="off")
-              input(type="hidden" name="_csrf" value=csrfToken)
-              .comment-form__header
-                a.comment-form__avatar.avatar(href="#")
-                  img(src="/img/avatar.jpg" srcset="/img/avatar@2x.jpg 2x" alt="Аватар пользователя")
-                p.comment-form__author Вам слово
-              .comment-form__field
-                .form__field
-                  textarea#comment-field.js-field(name="comment" cols="30" rows="10") Нормальное вообще кресло! А как насч
-                  label(for="comment-field") Текст комментария
-                  span Обязательное поле
-              +insertErrorMessages(validationMessages)
-              button.comment-form__button.btn.btn--white.js-button(type="submit" disabled="") Отправить
+
+          if user
+            .ticket__comment-form
+              form.form.comment-form(action=`/offers/${id}/comments` method="post" enctype="application/x-www-form-urlencoded"
+              autocomplete="off")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                .comment-form__header
+                  a.comment-form__avatar.avatar(href="#")
+                    img(src=`/img/${user.avatar}` alt="Аватар пользователя")
+                  p.comment-form__author Вам слово
+                .comment-form__field
+                  .form__field
+                    textarea#comment-field.js-field(name="comment" cols="30" rows="10")
+                    label(for="comment-field") Текст комментария
+                    span Обязательное поле
+                +insertErrorMessages(validationMessages)
+                button.comment-form__button.btn.btn--white.js-button(type="submit" disabled="") Отправить
+          else
+            include ../partials/comments-for-guess.pug
+
           .ticket__comments-list
             ul.comments-list
-              each comment of offer.comments
-                li
-                  .comment-card
-                    .comment-card__header
-                      a.comment-card__avatar.avatar(href="#")
-                        img(src=`/img/${comment.users.avatar}` alt="Аватар пользователя")
-                      p.comment-card__author #{comment.users.name}
-                    .comment-card__content
-                      p #{comment.text}
+              if (offer.comments.length === 0)
+                include ../partials/ticket-comments-empty
+              else
+                each comment of offer.comments
+                  li
+                    .comment-card
+                      .comment-card__header
+                        a.comment-card__avatar.avatar(href="#")
+                          img(src=`/img/${comment.users.avatar}` alt="Аватар пользователя")
+                        p.comment-card__author #{comment.users.name}
+                        p.comment-card__date #{formatDate(TypeFormateDate.COMMENT, comment.createdAt)}
+                      .comment-card__content
+                        p #{comment.text}
